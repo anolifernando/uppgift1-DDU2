@@ -39,3 +39,13 @@ function createAllCityBoxes() {
     }
   }
 }
+
+
+function getClosestCity(targetCityObject) {
+  for (let i = 0; i < cities.length; i++) {
+      if (targetCityObject == cities[i].name) {
+          let targetId = i;
+          for (let j = 0; j < distances.length; j++) {
+              let city1 = distances[j].city1;
+              let city2 = distances[j].city2;
+              let distance = distances[j].distance;

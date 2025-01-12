@@ -135,3 +135,10 @@ if (cityWasFound == false) {
   cityUndertitle.innerHTML = " ";
   titleHead.innerHTML = "Not found";
 }
+
+for (let row = 0; row <= cities.length; row++) {
+  for (let column = 0; column <= cities.length; column++) {
+      let gridCell = document.createElement("div");
+      gridCell.classList.add("cell");
+      distanceTable.appendChild(gridCell);
+

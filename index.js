@@ -15,7 +15,27 @@ let maxDistance = 0;
 
 function createAllCityBoxes() {
   for (let i = 0; i < cities.length; i++) {
-      let cityBox = document.createElement("p");
-      cityBox.classList.add("cityBox");
-      cityBox.textContent = cities[i].name;
-      cityBoxes.appendChild(cityBox);
+    let cityBox = document.createElement("p");
+    cityBox.classList.add("cityBox");
+    cityBox.textContent = cities[i].name;
+    cityBoxes.appendChild(cityBox);
+
+    if (enterCity == cities[i].name) {
+      cityBox.classList.add("target");
+    }
+
+    if (closestCityFound == cities[i].name) {
+      cityBox.textContent = `${closestCityFound} ligger ${
+        minDistance / 10
+      } mil bort`;
+      cityBox.classList.add("closest");
+    }
+
+    if (furthestCityFound == cities[i].name) {
+      cityBox.textContent = `${furthestCityFound} ligger ${
+        maxDistance / 10
+      } mil bort`;
+      cityBox.classList.add("furthest");
+    }
+  }
+}

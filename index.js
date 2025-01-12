@@ -121,3 +121,12 @@ function getFurthestCity(targetCityObject) {
 getClosestCity(enterCity);
 getFurthestCity(enterCity);
 createAllCityBoxes();
+
+for (let keyCity in cities) {
+  if (enterCity == cities[keyCity].name) {
+    cityWasFound = true;
+    cityTitle.innerHTML = `${enterCity} (${cities[keyCity].country})`;
+    titleHead.innerHTML = enterCity;
+    break;
+  }
+}

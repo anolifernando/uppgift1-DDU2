@@ -5,3 +5,10 @@ const cityBoxes = document.querySelector("#cities");
 const distanceTable = document.querySelector("#table");
 const theClosestCity = document.querySelector("#closest");
 const theFurthestCity = document.querySelector("#furthest");
+
+let enterCity = prompt("Vilken stad?");
+let cityWasFound = false;
+let closestCityFound = null;
+let furthestCityFound = null;
+let minDistance = 3000;
+let maxDistance = 0;

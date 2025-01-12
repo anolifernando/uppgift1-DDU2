@@ -49,3 +49,11 @@ function getClosestCity(targetCityObject) {
               let city1 = distances[j].city1;
               let city2 = distances[j].city2;
               let distance = distances[j].distance;
+
+              if (city1 === targetId || city2 === targetId) {
+                let otherCityId;
+                if (city1 === targetId) {
+                    otherCityId = city2;
+                } else {
+                    otherCityId = city1;
+                }

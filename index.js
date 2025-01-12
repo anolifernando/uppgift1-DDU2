@@ -81,32 +81,43 @@ function getClosestCity(targetCityObject) {
 
 function getFurthestCity(targetCityObject) {
   for (let i = 0; i < cities.length; i++) {
-      if (targetCityObject == cities[i].name) {
-          let targetId = i;
-          for (let j = 0; j < distances.length; j++) {
-              let city1 = distances[j].city1;
-              let city2 = distances[j].city2;
-              let distance = distances[j].distance;
+    if (targetCityObject == cities[i].name) {
+      let targetId = i;
+      for (let j = 0; j < distances.length; j++) {
+        let city1 = distances[j].city1;
+        let city2 = distances[j].city2;
+        let distance = distances[j].distance;
 
+        if (city1 === targetId || city2 === targetId) {
+          let otherCityId;
+          if (city1 === targetId) {
+            otherCityId = city2;
+          } else {
+            otherCityId = city1;
+          }
 
-              if (city1 === targetId || city2 === targetId) {
-                let otherCityId;
-                if (city1 === targetId) {
-                    otherCityId = city2;
-                } else {
-                    otherCityId = city1;
-                }
+          if (distance > maxDistance) {
+            maxDistance = distance;
 
-                if (distance > maxDistance) {
-                    maxDistance = distance;
-
-                    for (let i = 0; i < cities.length; i++) {
-                        if (cities[i].id === otherCityId) {
-                            furthestCityFound = cities[i].name;
-                        }
-                    }
-                }
+            for (let i = 0; i < cities.length; i++) {
+              if (cities[i].id === otherCityId) {
+                furthestCityFound = cities[i].name;
+              }
             }
+          }
         }
+      }
     }
+  }
+
+  if (furthestCityFound != null) {
+    theFurthestCity.textContent = furthestCityFound;
+    theFurthestCity.classList.add("furthest");
+  }
+
+  return furthestCityFound;
 }
+
+getClosestCity(enterCity);
+getFurthestCity(enterCity);
+createAllCityBoxes();

@@ -142,3 +142,19 @@ for (let row = 0; row <= cities.length; row++) {
       gridCell.classList.add("cell");
       distanceTable.appendChild(gridCell);
 
+
+      if (row >= 1 && column >= 1) {
+        for (let distanceKey in distances) {
+            if (distances[distanceKey].city1 == column - 1 && distances[distanceKey].city2 == row - 1) {
+                gridCell.textContent = distances[distanceKey].distance / 10;
+            }
+            if (distances[distanceKey].city2 == column - 1 && distances[distanceKey].city1 == row - 1) {
+                gridCell.textContent = distances[distanceKey].distance / 10;
+            }
+        }
+    }
+
+    if (row == 0) {
+        gridCell.classList.add("head_row");
+        gridCell.textContent = column - 1;
+    }

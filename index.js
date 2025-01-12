@@ -40,20 +40,41 @@ function createAllCityBoxes() {
   }
 }
 
-
 function getClosestCity(targetCityObject) {
   for (let i = 0; i < cities.length; i++) {
-      if (targetCityObject == cities[i].name) {
-          let targetId = i;
-          for (let j = 0; j < distances.length; j++) {
-              let city1 = distances[j].city1;
-              let city2 = distances[j].city2;
-              let distance = distances[j].distance;
+    if (targetCityObject == cities[i].name) {
+      let targetId = i;
+      for (let j = 0; j < distances.length; j++) {
+        let city1 = distances[j].city1;
+        let city2 = distances[j].city2;
+        let distance = distances[j].distance;
 
-              if (city1 === targetId || city2 === targetId) {
-                let otherCityId;
-                if (city1 === targetId) {
-                    otherCityId = city2;
-                } else {
-                    otherCityId = city1;
-                }
+        if (city1 === targetId || city2 === targetId) {
+          let otherCityId;
+          if (city1 === targetId) {
+            otherCityId = city2;
+          } else {
+            otherCityId = city1;
+          }
+
+          if (distance < minDistance) {
+            minDistance = distance;
+
+            for (let k = 0; k < cities.length; k++) {
+              if (cities[k].id === otherCityId) {
+                closestCityFound = cities[k].name;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  if (closestCityFound != null) {
+    theClosestCity.textContent = closestCityFound;
+    theClosestCity.classList.add("closest");
+  }
+
+  return closestCityFound;
+}

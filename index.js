@@ -138,23 +138,46 @@ if (cityWasFound == false) {
 
 for (let row = 0; row <= cities.length; row++) {
   for (let column = 0; column <= cities.length; column++) {
-      let gridCell = document.createElement("div");
-      gridCell.classList.add("cell");
-      distanceTable.appendChild(gridCell);
+    let gridCell = document.createElement("div");
+    gridCell.classList.add("cell");
+    distanceTable.appendChild(gridCell);
 
-
-      if (row >= 1 && column >= 1) {
-        for (let distanceKey in distances) {
-            if (distances[distanceKey].city1 == column - 1 && distances[distanceKey].city2 == row - 1) {
-                gridCell.textContent = distances[distanceKey].distance / 10;
-            }
-            if (distances[distanceKey].city2 == column - 1 && distances[distanceKey].city1 == row - 1) {
-                gridCell.textContent = distances[distanceKey].distance / 10;
-            }
+    if (row >= 1 && column >= 1) {
+      for (let distanceKey in distances) {
+        if (
+          distances[distanceKey].city1 == column - 1 &&
+          distances[distanceKey].city2 == row - 1
+        ) {
+          gridCell.textContent = distances[distanceKey].distance / 10;
         }
+        if (
+          distances[distanceKey].city2 == column - 1 &&
+          distances[distanceKey].city1 == row - 1
+        ) {
+          gridCell.textContent = distances[distanceKey].distance / 10;
+        }
+      }
     }
 
     if (row == 0) {
-        gridCell.classList.add("head_row");
-        gridCell.textContent = column - 1;
+      gridCell.classList.add("head_row");
+      gridCell.textContent = column - 1;
     }
+    if (column == 0 && row >= 1) {
+      gridCell.classList.add("head_column");
+      gridCell.textContent = cities[row - 1].id + " - " + cities[row - 1].name;
+    }
+
+    if (row == column) {
+      gridCell.textContent = " ";
+    }
+
+    if (row % 2 == 1) {
+      gridCell.classList.add("even_row");
+    }
+
+    if (column % 2 == 1 && row != 0) {
+      gridCell.classList.add("even_col");
+    }
+  }
+}

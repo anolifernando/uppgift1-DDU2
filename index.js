@@ -12,3 +12,10 @@ let closestCityFound = null;
 let furthestCityFound = null;
 let minDistance = 3000;
 let maxDistance = 0;
+
+function createAllCityBoxes() {
+  for (let i = 0; i < cities.length; i++) {
+      let cityBox = document.createElement("p");
+      cityBox.classList.add("cityBox");
+      cityBox.textContent = cities[i].name;
+      cityBoxes.appendChild(cityBox);

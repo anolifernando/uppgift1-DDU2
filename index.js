@@ -130,3 +130,8 @@ for (let keyCity in cities) {
     break;
   }
 }
+if (cityWasFound == false) {
+  cityTitle.innerHTML = `${enterCity} finns inte i databasen`;
+  cityUndertitle.innerHTML = " ";
+  titleHead.innerHTML = "Not found";
+}
